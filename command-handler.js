@@ -9,7 +9,6 @@ module.exports = (client) => {
     const PREFIX = '-';
 
     const commandFiles = getFiles('./commands', SUFFIX);
-    console.log(commandFiles);
 
     for (const command of commandFiles) {
         let commandFile = require(command);
@@ -21,7 +20,7 @@ module.exports = (client) => {
         commands[commandName.toLowerCase()] = commandFile;
     }
 
-    console.log(commands);
+    console.log('\x1b[34m%s\x1b[0m', "loaded " + commandFiles.length + " commands");
 
     client.on('messageCreate', (message) => {
         if (message.author.bot || !message.content.startsWith(PREFIX)) return;

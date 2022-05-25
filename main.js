@@ -49,36 +49,36 @@ client.on('ready', () => {
     //     ]
     // });
 
-    console.log('Abyss Bot Ready!');
+    console.log('\x1b[32m%s\x1b[0m', 'Abyss Bot Ready!');
 
 });
 
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
+// client.on('interactionCreate', async interaction => {
+//     if (!interaction.isCommand()) return;
 
-    const { commandName, options } = interaction;
+//     const { commandName, options } = interaction;
 
-    if (commandName === 'ping') {
-        interaction.reply({
-            content: 'pong',
-            ephemeral: true // Send the message as an hidden message
-        });
-    }
-    else if (commandName === 'add') {
-        const num1 = options.getNumber('num1') || 0; //gets number and (even if it is required) or 0 to satisfy complier
-        const num2 = options.getNumber('num2') || 0;
+//     if (commandName === 'ping') {
+//         interaction.reply({
+//             content: 'pong',
+//             ephemeral: true // Send the message as an hidden message
+//         });
+//     }
+//     else if (commandName === 'add') {
+//         const num1 = options.getNumber('num1') || 0; //gets number and (even if it is required) or 0 to satisfy complier
+//         const num2 = options.getNumber('num2') || 0;
 
-        await interaction.deferReply({ //gives the bot some time
-            ephemeral: true,
-        })
+//         await interaction.deferReply({ //gives the bot some time
+//             ephemeral: true,
+//         })
 
-        await new Promise((resolve) => setTimeout(resolve, 3000)); //gives time to enter the answer, forces await
+//         await new Promise((resolve) => setTimeout(resolve, 3000)); //gives time to enter the answer, forces await
 
-        interaction.editReply({ //changes reply
-            content: `${num1} + ${num2} = ${num1 + num2}`,
-        });
+//         interaction.editReply({ //changes reply
+//             content: `${num1} + ${num2} = ${num1 + num2}`,
+//         });
 
-    }
-});
+//     }
+// });
 
 client.login(process.env.TOKEN);
